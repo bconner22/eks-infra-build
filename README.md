@@ -19,8 +19,14 @@ A Linux(RedHat/yum based) machine with an admin IAM named 'eksadmin' attached TO
 
 ## How to use this repo
 
-1. Go to your helm-nodejs-timestamp repo(example can be forked at https://github.com/bconner22/nodejs-timestamp), and set your clustername and appname in the values.yaml file. Commit this to master.)
-`./oneclick.sh`
+1. Set your helm-nodejs-timestamp repo URL on line 2 of prereqs.sh.  If your helm-nodejs-timestamp repo's master branch has its clustername, appname, and image 
+   like you want them, then you can skip step 2 and 3.
+2. Clone your helm-nodejs-timestamp repo(example can be forked at https://github.com/bconner22/nodejs-timestamp) adjacent to this repo, like this:
+    > ~/environment/
+      > eks-infra-build/
+      > nodejs-timmestamp-repo/
+3. In the helm-nodejs-timestamp repo, populate values.yaml with your desired EKS `clustername`, `appname`, and `image
+4. In this repo, run `./oneclick.sh`
 
 ## Cleanup
 

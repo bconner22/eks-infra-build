@@ -24,7 +24,6 @@ echo "export AWS_REGION=${AWS_REGION}" | tee -a ~/.bash_profile
 aws configure set default.region ${AWS_REGION}
 aws configure get default.region
 aws sts get-caller-identity --query Arn | grep eks-admin -q && echo "IAM role valid" || echo "IAM role NOT valid"
-cd ~/environment
 ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y 2>&1 >/dev/null
 aws ec2 import-key-pair --key-name ${CLUSTER_NAME} --public-key-material file://~/.ssh/id_rsa.pub
 aws kms create-alias --alias-name alias/${CLUSTER_NAME} --target-key-id $(aws kms create-key --query KeyMetadata.Arn --output text)
@@ -45,4 +44,4 @@ helm completion bash >> ~/.bash_completion
 . ~/.bash_completion
 source <(helm completion bash)
 echo "Installing newman"
-npm install -g newman
+npm list newman || npm install newman

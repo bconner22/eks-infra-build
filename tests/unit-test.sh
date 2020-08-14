@@ -1,6 +1,4 @@
 #!/bin/bash
-echo "sleeping 10"
-sleep 10
 until kubectl get nodes
 do 
  echo "Waiting for cluster to come up"

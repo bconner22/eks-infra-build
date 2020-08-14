@@ -24,7 +24,12 @@ A Linux(RedHat/yum based) machine with an admin IAM named 'eksadmin' attached TO
 2. Clone your helm-nodejs-timestamp repo(example can be forked at https://github.com/bconner22/nodejs-timestamp) adjacent to this repo, like this:\
 
 <code>
-~/environment/\
+ls ~/environment/
+</code>
+
+Should produce:
+
+<code>
    eks-infra-build/\
    nodejs-timestamp-repo/\
 </code>

@@ -27,3 +27,5 @@ ROLE_NAME=$(aws cloudformation describe-stack-resources --stack-name ${STACK_NAM
 echo "export ROLE_NAME=${ROLE_NAME}" | tee -a ~/.bash_profile
 echo "Running Unit test"
 ./tests/unit-test.sh
+echo "Enabling IAM Roles for Service Accounts on your ${CLUSTER_NAME} cluster"
+eksctl utils associate-iam-oidc-provider --region=${AWS_REGION} --cluster=${CLUSTER_NAME} --approve

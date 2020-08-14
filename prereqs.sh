@@ -1,5 +1,7 @@
-#!/bin/bash
-export CLUSTER_NAME=$1
+ #!/bin/bash
+[ -d "../helm-nodejs-timestamp" ] && echo "Directory  ../helm-nodejs-timestamp exists, not repulling from github." || git clone https://github.com/bconner22/helm-nodejs-timestamp.git ../helm-nodejs-timestamp
+export CLUSTER_NAME=$(grep 'clustername:' ../helm-nodejs-timestamp/values.yaml | tail -n1 | awk '{ print $2}')
+export APP_NAME=$(grep 'appname:' ../helm-nodejs-timestamp/values.yaml | tail -n1 | awk '{ print $2}')
 sudo curl --silent --location -o /usr/local/bin/kubectl   https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.7/2020-07-08/bin/linux/amd64/kubectl
 sudo chmod +x /usr/local/bin/kubectl
 sudo pip install --upgrade awscli && hash -r
@@ -34,7 +36,6 @@ eksctl version
 eksctl completion bash >> ~/.bash_completion
 . /etc/profile.d/bash_completion.sh
 . ~/.bash_completion
-eksctl utils associate-iam-oidc-provider --region=${AWS_REGION} --cluster=${CLUSTER_NAME} --approve
 aws sts get-caller-identity
 echo "Installing helm"
 curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash

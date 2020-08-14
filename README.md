@@ -4,6 +4,7 @@
 
 1. Install all tools needed to interact with your EKS cluster
 2. Create your EKS cluster
+3. Deploy the node.js-timestamp app
 
 ## Prerequisites(TODO Tighten up the IAM so admin isn't required)
 
@@ -18,7 +19,8 @@ A Linux(RedHat/yum based) machine with an admin IAM named 'eksadmin' attached TO
 
 ## How to use this repo
 
-`./oneclick.sh <what you'd like to name your cluster>`
+1. Go to your helm-nodejs-timestamp repo(example can be forked at https://github.com/bconner22/nodejs-timestamp), and set your clustername and appname in the values.yaml file. Commit this to master.)
+`./oneclick.sh`
 
 ## Cleanup
 

@@ -1,5 +1,11 @@
 #!/bin/bash
-kubectl get nodes
+echo "sleeping 10"
+sleep 10
+until kubectl get nodes
+do 
+ echo "Waiting for cluster to come up"
+ sleep 20
+done
 if [ $? -eq 0 ]
 then
   echo "Unit Test successful, $CLUSTER_NAME is up and you can now issue kubectl commands to it"
